@@ -1,0 +1,14 @@
+apiVersion: sources.eventing.knative.dev/v1alpha1
+kind: KinesisSource
+metadata:
+  name: test-kinesis-source
+spec:
+  streamName: STREAM-NAME
+  region: us-west-2
+  awsCredsSecret:
+    name: aws-credentials
+    key: credentials
+  sink:
+    apiVersion: eventing.knative.dev/v1alpha1
+    kind: Channel
+    name: cj-3

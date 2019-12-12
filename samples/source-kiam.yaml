@@ -1,0 +1,17 @@
+apiVersion: sources.eventing.knative.dev/v1alpha1
+kind: KinesisSource
+metadata:
+  name: test-kinesis-source
+spec:
+  streamName: STREAM-NAME
+  region: us-west-2
+  kiamOptions:
+    # IAM role acquired for the namespace, it could be ARN or simply the role
+    # name if it's in the same AWS account as the k8s cluster master nodes.
+    assignedIamRole: ASSIGNED-IAM-ROLE
+    # IAM role to access the stream
+    kinesisIamRoleArn: ROLE-ARN
+  sink:
+    apiVersion: eventing.knative.dev/v1alpha1
+    kind: Channel
+    name: cj-3
